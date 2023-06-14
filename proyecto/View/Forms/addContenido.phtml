@@ -1,0 +1,71 @@
+<?php
+
+require_once(__DIR__.'/../../Controller/IndexController.php');
+
+$autor = $_POST['autor'];
+$titulo = $_POST['titulo'];
+$noticia = $_POST['noticia'];
+$tags = $_POST['tags'];
+
+$cnt = new IndexController();
+$cnt->createContenido($autor,$titulo,$noticia,$tags);
+
+?><html>
+	<head>
+		<style>
+			.wrapper {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 300px;
+}
+
+body {
+   background-image: url("https://e00-marca.uecdn.es/assets/multimedia/imagenes/2016/05/31/14646900404664.jpg");
+  background-repeat: no-repeat; 
+  background-size: 100%
+}
+
+.botondeadd {
+	background-color:#c74545;
+	-moz-border-radius:28px;
+	-webkit-border-radius:28px;
+	border-radius:28px;
+	border:1px solid #f00e87;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:16px 31px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #a761d6;
+}
+.botondeadd:hover {
+	background-color:#9128d6;
+}
+.botondeadd:active {
+	position:relative;
+	top:1px;
+}
+		</style>
+		<title>Dani Wiki</title>
+	</head>
+	<body>
+		<div class="wrapper">
+			<h1>Noticia Creada Correctamente</h1>
+			<a class="botondeadd" href="../Forms/formContenido.phtml">Agreagar otra noticia</a>
+			<br>
+			<br>
+			<a class="botondeadd" href="../Index.phtml">Volver al inicio</a>
+		</div>
+	</body>
+</html>

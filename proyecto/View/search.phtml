@@ -1,0 +1,282 @@
+<?php
+  /* $conn =  mysqli_connect("127.0.0.1", "DaniT", "DaniT") or die("Error connecting to database: ".mysqli_error());
+   
+     
+    mysqli_select_db($conn,'wikiDb') or die(mysqli_error($conn));
+$sql="SELECT * FROM Wiki";
+$records=mysqli_query($conn,$sql);*/
+// 1. Create a database connection
+$connection = mysqli_connect('127.0.0.1','DaniT','DaniT');
+
+if (!$connection) {
+    error_log("Failed to connect to MySQL: " . mysqli_error($connection));
+    die('Internal server error');
+}
+
+// 2. Select a database to use 
+$db_select = mysqli_select_db($connection, 'wikiDb');
+if (!$db_select) {
+    error_log("Database selection failed: " . mysqli_error($connection));
+    die('Internal server error');
+}
+    
+?>
+ 
+
+
+<head>
+
+    <title>Search results</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+</head>
+<body>
+<?php
+require_once(__DIR__.'/../Controller/IndexController.php');
+
+session_start();
+
+
+$controller1 = new IndexController();
+$contents = $controller1->getNoticias();
+$query = $_GET['query']; 
+$min_length = 3;
+   
+     
+    if(strlen($query) >= $min_length){
+        $query = htmlspecialchars($query); 
+    
+         
+        $query = mysqli_real_escape_string($connection,$query);
+
+        $raw_results = mysqli_query($connection,"SELECT * FROM Wiki
+            WHERE (`titulo` LIKE '%".$query."%') OR (`titulo` LIKE '%".$query."%')") or die(mysqli_error());
+             
+        if(mysqli_num_rows($raw_results) > 0){ 
+            while($results = mysqli_fetch_array($raw_results)){
+               echo '<div id="wikifinal">';
+		   
+		    	echo '<div class="container">';
+		  echo '<div class="section">';
+			    echo '<div class="col span_2_of_3">';
+             	echo '<div class="wiki-post">';
+		    				echo '<h2 class="wiki-title"> Titulo: ' .$results['titulo']. '</h2>';
+		    				echo '<h1 class="wiki-autor"> Autor: '  .$results['autor'].'</h1>';
+		    				echo '<p class="wiki-content"> Noticia: '.$results['noticia'].'</p>';
+		    				echo '<h2 class="date"> Tags: ' .$results['tags']. '</h2>';
+             echo '<a href="Forms/formDetails.phtml?id=' . $results['sid'] . '"> Detalles</a>';
+		    			echo '</div>';
+		    			echo '</div>';
+		    			echo '</div>';
+		    			echo '</div>';
+               
+		    			echo '</div>';
+                /*echo "<p><h3>".$results['titulo']."</h3>".$results['autor'].$results['noticia'].$results['tags']."</p>";*/
+                // posts results gotten from database(title and text) you can also show id ($results['id'])
+            }
+             
+        }
+        else{ 
+            echo '<h1 id="errorbusqueda">No resultados con ese titulo<h1>';
+        }
+         
+    }
+    else{ 
+        echo '<h1 id="errorbusqueda"> Introduce un minimo de '.$min_length.' caracteres</h1>';
+    }
+ /* foreach($contents as $cnt){
+   echo '<a href="Forms/formDetails.phtml?id=' . $cnt->getIdCont() . '"> Detalles</a>'; }*/
+?>
+<style type="text/css">
+    	body{
+	margin: 0;
+	padding: 0;
+	font-size: 16px;
+	line-height: 1.4em;
+	color: #222;
+	background: #474747;
+	font-family: 'Lato', sans-serif;
+}
+
+a{
+	text-decoration: none;
+	color: inherit;
+}
+
+.section {
+	clear: both;
+	padding: 0;
+	margin: 0;
+}
+
+.col {
+	display: block;
+	float:left;
+	margin: 1% 0 1% 1.6%;
+}
+.col:first-child { margin-left: 0; }
+
+.span_3_of_3 {
+	width: 100%;
+}
+.span_2_of_3 {
+	width: 66.1%;
+}
+.span_1_of_3 {
+	width: 32.2%;
+}
+
+.container{
+	max-width: 1020px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+.wiki-post{
+	background: #fff;
+	margin: 0 auto 2em auto;
+	padding: 35px 30px;
+	box-shadow: 5px 5px 15px -1px rgba(0,0,0,0.3);
+}
+
+.side-post{
+	background: #fff;
+	margin: 0 auto 1.5em auto;
+	width: 15em;
+	padding: 20px;
+}
+
+.wiki-content{
+	font-size: 1em;
+	border-left: 5px solid #8EE5EE;
+	padding-left: 15px;
+	font-style: normal;
+	font-family: Monospace;
+}
+
+.side-content{
+	font-size: .9em;
+	margin-top: 8px;
+	margin-bottom: 0;
+}
+
+.wiki-title{
+	font-size: 2em;
+	margin-top: 5px;
+}
+
+.wiki-title:hover{
+	transform: scale(1.1);
+	transition: all .2s ease-in-out;
+}
+
+.wiki-autor{
+	font-size: 2.1em;
+	margin-top: 5px;
+	
+}
+
+.wiki-autor:hover{
+	transform: scale(1.1);
+	transition: all .2s ease-in-out;
+}
+
+.date{
+	font-size: 1em;
+	font-weight: 400;
+	color: #9C9C9C;
+	margin-top: -10px;
+	text-decoration: underline;
+	text-decoration-color: currentColor;
+}
+
+.post-link{
+	color: #009ACD;
+	font-style: italic;
+	transition: all 0.4s;
+	font-style: normal;
+}
+
+.post-link:hover{
+	color: #005c7b;
+	text-decoration: underline;
+	text-decoration-color: currentColor;
+	cursor: pointer;
+}
+
+/*Grid*/
+
+/* @900px*/
+@media only screen and (max-width: 56.25em) {
+	.col{ margin: 1% 0 1% 0%;}
+	.span_3_of_3, .span_2_of_3, .span_1_of_3{ width: 100%; }
+	.side-post{ width: 42%;
+			   float: left;
+			   margin: -2% 0 1% 1.6%;}
+}
+
+/* @685px*/
+@media only screen and (max-width: 42.813em) {
+	.side-post{ width: auto;
+				padding: 15px;
+			    margin: -2% auto 8% auto; }
+	.wiki-title{ font-size: 1.95em; }
+	.date{ font-size: .9em; }		
+}
+
+/* @480px */
+@media only screen and (max-width: 30em){
+	nav ul{ max-height: 0; }
+	.reveal{ max-height:19em; }
+	nav ul .nav-item{ -webkit-box-sizing: border-box;
+		 			  -moz-box-sizing: border-box;
+     				  -ms-box-sizing: border-box;
+        			  box-sizing: border-box;
+					  width:100%;
+		 			  padding: 15px; }
+	
+	.menu-bar{ display: block; }
+
+}
+
+/* @380px*/
+@media only screen and (max-width: 23.75em) {
+	.wiki-content, .post-link{ font-size: .9em; }
+	.side-content{ font-size: .8em; }
+	.button{ padding: 10px 15px; }
+	.nav-item{ font-size: 1.2em; }
+}
+
+.botonvuelta {
+	background-color:#c74545;
+	-moz-border-radius:28px;
+	-webkit-border-radius:28px;
+	border-radius:28px;
+	border:1px solid #f00e87;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:16px 31px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #a761d6;
+}
+.botonvuelta:hover {
+	background-color:#9128d6;
+}
+.botonvuelta:active {
+	position:relative;
+	top:1px;
+}
+#errorbusqueda{
+	color:white;
+	font-size:30px;
+	font-family:Arial cursive;
+	font-style:bold;
+}
+</style>
+</body>
+
+<a class="botonvuelta" href="Index.phtml">Volver al Home</a>
+</html>

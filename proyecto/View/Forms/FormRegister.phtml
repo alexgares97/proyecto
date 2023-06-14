@@ -1,0 +1,140 @@
+<?php 
+
+require_once(__DIR__.'/../../Controller/UserController.php');
+
+
+?><html>
+	<head>
+		<style type="text/css">
+.register-page {
+  width: 360px;
+  padding: 8% 0 0;
+  margin: auto;
+}
+.form {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 100px;
+}
+.form input {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+  
+}
+.button {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #9898f2;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #9898f2;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+.button:hover, .button:active, .button:focus {
+  background: #9b7171;
+}
+
+.form .register-form {
+  display: none;
+}
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+body {
+  background: #E7E99B;
+  background: -webkit-linear-gradient(right, #E7E99B, #F9BA7E);
+  background: -moz-linear-gradient(right, #E7E99B, #F9BA7E);
+  background: -o-linear-gradient(right, #E7E99B, #F9BA7E);
+  background: linear-gradient(to left, #E7E99B, #F9BA7E);
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;      
+}
+
+.txt1 {
+  font-family: OpenSans-Regular;
+  font-size: 15px;
+  line-height: 1.4;
+  color: #999999;
+}
+
+.txt2 {
+  font-family: OpenSans-Regular;
+  font-size: 15px;
+  line-height: 1.4;
+  color: #4272d7;
+}
+
+.hov1:hover {
+  text-decoration: underline;
+}
+		</style>
+		<title>Register User</title>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		<div id="wrapper">
+		    
+			<div id="formUser">
+				<form action="addUser.phtml" method="post">
+				<div class="form">
+						<form class="register-form">
+						<h2>Registro</h2>
+						<input type="text" id="formusername" name="UserName" placeholder="Usuario"/>
+						<input type="password" id="formpassword" name="Password" placeholder="Password"/>
+						<input type="text" id="formciudad" placeholder="Ciudad"/>
+						<input type="email" name="email" required placeholder="Email"/>
+						<br>Acepto los terminos y condiciones<br><input id="condicions" type="checkbox" required/>
+						<input type="submit" value="Crear Usuario" class="button"/>
+						</form>
+					<div class="text-center">
+						<span class="txt1">
+							Ya tienes cuenta?
+						</span>
+						<a href="FormLogin.phtml" class="txt2 hov1">
+							Inicia Sesion
+						</a>
+					</div>
+				</form>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="">
+       function validarTerms(){
+                  var terms = document.getElementById("condicions");
+                  if (terms.checked == true){
+                    return true;
+                  } else {
+                      alert("Debes aceptar los terminos y condiciones");
+                    return false;
+                  }
+}
+	</script>
+</html>
+

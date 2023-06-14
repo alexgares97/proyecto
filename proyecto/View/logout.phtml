@@ -1,0 +1,76 @@
+<?php
+   session_start();
+   unset($_SESSION["UserName"]);
+?>
+<html>
+    <style type="text/css">
+       
+.logout-page {
+  width: 360px;
+  padding: 8% 0 0;
+  margin: auto;
+}
+.form {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 100px;
+}
+
+body {
+   background-image: url("https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569__340.jpg");
+  background-repeat: no-repeat; 
+  background-size: 100%
+}
+
+.logout100-form-title {
+  display: block;
+  font-family: OpenSans-Regular;
+  font-size: 30px;
+  color: #555555;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.txt1 {
+  font-family: OpenSans-Regular;
+  font-size: 15px;
+  line-height: 1.4;
+  color: #999999;
+}
+
+.hov1:hover {
+  text-decoration: underline;
+}
+    </style>
+    <body>
+        	<div class="form">
+						<span class="logout100-form-title p-b-33">
+						 Te has desconectado correctamente
+						 <br>
+						 <br>
+						 Espero que hayas disfrutado
+					</span>
+					<br>
+						<form class="logout-form">
+						<br>
+						<div class="text-center">
+						<span class="txt1">
+							Dirigete a la pagina 
+						</span>
+						<a href="Index.phtml" class="txt2 hov1">
+							pricipal
+						</a>
+					</div>
+				</form>
+				</div>
+    </body>
+</html>

@@ -1,0 +1,42 @@
+<?php
+
+require_once(__DIR__.'/../../Controller/IndexController.php');
+
+
+
+$id = $_GET['id'];
+
+$cnt = new IndexController();
+$contents = $cnt->getContenidoById($id);
+
+
+?><html>
+	<style type="text/css">
+		h1{
+			color:white;
+		}
+		
+		#firstbutton{
+	display: block;
+padding: 15px 20px;
+margin-top: .8em;
+background: #219E3D;
+text-align: center;
+color: #fff;
+font-size: 1.4em;
+border-radius: 3px;
+transition: all .4s ease-in;
+		}
+	</style>
+	<head><title>Detalles</title></head>
+	<body>
+		<div id="wrapper">
+	
+		<?php include(__DIR__.'/../details.phtml'); ?>
+		</div>
+		<br>
+    
+
+		<a id="firstbutton" href="../Index.phtml">Volver al Home</a>
+	</body>
+</html>

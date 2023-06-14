@@ -1,0 +1,386 @@
+<?php
+
+require_once(__DIR__.'/../Controller/IndexController.php');
+
+session_start();
+
+$id = $_GET['id'];
+
+
+
+$cnt = new IndexController();
+$contents = $cnt->getContenidoById($id);
+
+
+?><html>
+  <header>
+  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  	<style type="text/css">
+body{
+margin: 0;
+padding: 0;
+font-size: 16px;
+line-height: 1.4em;
+color: #222;
+background: #474747;
+font-family: 'Lato', sans-serif;
+}
+
+a{
+text-decoration: none;
+color: inherit;
+}
+
+.section {
+clear: both;
+padding: 0;
+margin: 0;
+}
+
+.col {
+display: block;
+float:left;
+margin: 1% 0 1% 1.6%;
+}
+.col:first-child { margin-left: 0; }
+
+.span_3_of_3 {
+width: 100%;
+}
+.span_2_of_3 {
+width: 66.1%;
+}
+.span_1_of_3 {
+width: 32.2%;
+}
+
+header{
+max-width: 100%;
+background: #222;
+background: rgba(0,0,0,.6);
+padding: 20px;
+}
+
+nav{
+width: 100%;
+margin-bottom: 1em;
+background: #323232;
+font-family: 'Times-New-Roman', cursive;
+}
+
+.inici{
+text-align: center;
+color: #fff;
+font-size: 3em;
+font-weight: 400;
+font-family: 'Poiret One', cursive;
+}
+.prese{
+	text-align: left;
+	color: #fff;
+	font-size: 1em;
+	font-weight: 40;
+	font-family: 'Poiret One', cursive;
+}
+
+ul{
+padding: 0;
+margin: 0;
+overflow: hidden;
+color: #fff;
+text-align: center;
+-webkit-transition: max-height 0.5s;
+transition: max-height 0.5s;
+}
+
+.nav-item{
+display: inline-block;
+padding: 20px;
+font-size: 1.4em;
+-webkit-transition: background .5s;
+transition: background .5s
+}
+
+.nav-item:hover{
+background: #474747;
+cursor: pointer;
+}
+
+.container{
+max-width: 1020px;
+margin: 0 auto;
+padding: 20px;
+}
+
+.wiki-post{
+background: #fff;
+margin: 0 auto 2em auto;
+padding: 35px 30px;
+box-shadow: 5px 5px 15px -1px rgba(0,0,0,0.3);
+}
+
+.side-post{
+background: #fff;
+margin: 0 auto 1.5em auto;
+width: 15em;
+padding: 20px;
+}
+
+.wiki-content{
+font-size: 1em;
+border-left: 5px solid #8EE5EE;
+padding-left: 15px;
+}
+
+.side-content{
+font-size: .9em;
+margin-top: 8px;
+margin-bottom: 0;
+}
+
+.wiki-title{
+font-size: 2em;
+margin-top: 5px;
+  color:black;
+}
+
+.wiki-title:hover{
+transform: scale(1.1);
+transition: all .2s ease-in-out;
+}
+
+.wiki-autor{
+font-size: 2.1em;
+margin-top: 5px;
+color: black;	
+}
+
+.wiki-autor:hover{
+transform: scale(1.1);
+transition: all .2s ease-in-out;
+}
+
+.date{
+font-size: 1em;
+font-weight: 400;
+color: #9C9C9C;
+margin-top: -10px;
+text-decoration: underline;
+text-decoration-color: currentColor;
+}
+
+.post-link{
+color: #009ACD;
+font-style: italic;
+transition: all 0.4s;
+}
+
+.post-link:hover{
+color: #005c7b;
+text-decoration: underline;
+text-decoration-color: currentColor;
+cursor: pointer;
+}
+
+.button{
+display: block;
+padding: 15px 20px;
+margin-top: .8em;
+background: #219E3D;
+text-align: center;
+color: #fff;
+font-size: 1.4em;
+border-radius: 3px;
+transition: all .4s ease-in;
+}
+
+.button:hover{
+background: #7CFC99;
+}
+
+/*Grid PC,TABLET,MOBILE*/
+
+/* @900px*/
+@media only screen and (max-width: 56.25em) {
+	.col{ margin: 1% 0 1% 0%;}
+	.span_3_of_3, .span_2_of_3, .span_1_of_3{ width: 100%; }
+	.side-post{ width: 42%;
+			   float: left;
+			   margin: -2% 0 1% 1.6%;}
+}
+
+/* @685px*/
+@media only screen and (max-width: 42.813em) {
+	.side-post{ width: auto;
+				padding: 15px;
+			    margin: -2% auto 8% auto; }
+	.wiki-title{ font-size: 1.95em; }
+	.date{ font-size: .9em; }		
+}
+
+/* @480px */
+@media only screen and (max-width: 30em){
+	nav ul{ max-height: 0; }
+	.reveal{ max-height:19em; }
+	nav ul .nav-item{ -webkit-box-sizing: border-box;
+		 			  -moz-box-sizing: border-box;
+     				  -ms-box-sizing: border-box;
+        			  box-sizing: border-box;
+					  width:100%;
+		 			  padding: 15px; }
+	
+	.menu-bar{ display: block; }
+
+}
+
+/* @380px*/
+@media only screen and (max-width: 23.75em) {
+	.wiki-content, .post-link{ font-size: .9em; }
+	.side-content{ font-size: .8em; }
+	.button{ padding: 10px 15px; }
+	.nav-item{ font-size: 1.2em; }
+}
+
+table#tabletres{
+background-color: gainsboro;
+width: 280px;
+height: 250px;
+position: relative;
+left:5%;
+ 
+}
+      
+table#tabletress{
+background-color: gainsboro;
+width: 280px;
+height: 250px;
+position: relative;
+left:63.6%;
+ 
+}
+      
+#texttres{
+text-align: center
+}
+ul#ultitulo{
+display: block;
+list-style-type: disc;
+margin-top: 1em;
+margin-bottom: 1 em;
+margin-left: 0;
+margin-right: 0;
+padding-left: 40px;
+color:black;
+}
+
+table#tablequatre{
+    background-color: gainsboro;
+     width: 280px;
+	height: 250px;
+    position: relative;
+    left:5%;
+    margin-top: 70px
+ 
+}
+
+#butonbusqueda{
+	border-radius: 10px;
+	background-color: red;
+	border-color:pink;
+	width:89px;
+	height:30px;
+}
+
+#busquedaportitle{
+	border-radius: 10px;
+	width:200px;
+	height:30px;
+}
+#ultimahora{
+	color:red;
+}
+garros{
+	text-align: justify
+}
+  	</style>
+  	<h1 class="inici">MUSICA</h1>
+    <title> TenisPedia</title>
+  </header>
+  <nav>
+  	<?php
+  	if(isset($_SESSION["UserName"]))
+		    	{
+		    		echo '<h1 class="prese"> Welcome "'. $_SESSION["UserName"].'"  | <a href="logout.phtml"> Logout</a></h1>';
+		    	}
+		    	else
+		    	{
+  			echo '<ul>';
+				   echo '<li class="nav-item"><a href="FormRegister.phtml" >Register</a></li>';
+				    echo '<li class="nav-item"><a href="FormLogin.phtml" >Login</a></li>';
+				    
+			  echo '</ul>';
+				 
+			 echo '</div>';
+			 
+		    	}
+			  ?>
+		</nav>
+  <body>
+<form action="../search.phtml" method="GET">
+        <input id="busquedaportitle" type="text" name="query" placeholder="Búsqueda por titulo"/>
+        <input id="butonbusqueda" type="submit" value="Busqueda" />
+    </form>
+    <h1></h1>
+    
+   <div id="wikifinal">
+		   
+		    	<div class="container">
+		  <div class="section">
+			    <div class="col span_2_of_3">
+			    	
+		    	<?php
+		    
+		    		{
+		    			echo '<div class="wiki-post">';
+		    				
+		    				echo '<h1 class="wiki-autor"> Autor: ' . $contents->getAutor() . '</h1>';
+		    				echo '<h1 class="wiki-title"> Titulo: ' . $contents->getTitulo() . '</h1>';
+		    				echo '<p class="wiki-content"> Noticia: ' . $contents->getNoticia() . '</p>';
+		    				echo '<h2 class="date"> Tags: '  . $contents->getTags() . '</h2>';
+                echo '<iframe width="560" height="315" src=' . $contents->getTags() . ' frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+	
+		    					if(isset($_SESSION["UserName"]))
+		    				{
+                
+		    				
+		    				}
+		    				echo '</div>';
+		    		}
+		    	?>
+		    		<?php
+		    		
+		    			if(isset($_SESSION["UserName"]))
+		    			{?>
+		    <a href="Forms/formContenido.phtml" class="button">Add Contenido</a>
+		    <?php } ?>
+		    
+		    	</div>
+		    </div>
+		    </div>
+		   </div>
+    <table id="tabletres" ><tr><td><div id="texttres"><h1>Ultimo titulo Creado</h1></div><div id="titles">
+   <ul id="ultitulo"><li><?=$contents->getTitulo()?></li></ul></div></td></tr></table>
+   
+   <table id="tablequatre" ><tr><td><div id="texttres"><h1>Las BZRP Sessions mas vistas: </h1></div><div id="rank"><center><img src="https://mir-s3-cdn-cf.behance.net/projects/404/284c59133482265.Y3JvcCwxMDgwLDg0NCwwLDE2NQ.jpg" width="200px" hieght="150px"/></center>
+   <ol type="1" id="ultitulo"><li> Nathy Peluso - BZRP Music Sessions #36</li><li> L-Gante - BZRP Music Sessions #38</li><li> Trueno - BZRP Freestyle Sessions #6</li>
+     <li> Alemán - BZRP Music Sessions #15 </li><li>Nicki Nicole - BZRP Music Sessions #13</li></ol></div></td></tr></table>
+   <br><br>
+   <!-- <table id="tabletress" ><tr><td><div id="texttres"><h1 id="ultimahora">Última Hora</h1></div><div id="roland"><a id="garros">
+    	Los tenistas se encuentrán en la parte decisiva del tornéo, buscán alcanzar la deseada final<br><br> Nadal - Federer<br><br>
+    	Djokovic - Thiem<br><br> Ambos partidos nos prometen grandes emociones, hacia casi 8 años que Nadal y Roger no se enfrentaban en Roland Garros,
+    	Djokovic tampoco tendrá un partido facil.
+    </a></div></td></tr></table> -->
+    
+
+  </body>
+</html>

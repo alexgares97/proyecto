@@ -1,0 +1,56 @@
+<?php
+
+require_once(__DIR__.'/../Controller/IndexController.php');
+
+$id = $_GET['id'];
+
+$cnt = new IndexController();
+$contenido = $cnt->deleteContenido($id);
+
+?><html>
+	<head>
+		<style type="text/css">
+.wrapper {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 100px;
+}
+
+body{
+	background-image: url("https://fotos-madplanet.s3.eu-west-3.amazonaws.com/wp-content/uploads/2021/12/29221006/fondos-para-paginas-web-elegantes.jpg");
+  background-repeat: no-repeat; 
+  background-size: 100%
+}
+
+a{
+    font-family: verdana;
+    font-size: 18px;
+}
+
+#atags{
+    font-family: Arial-Narrow;
+    font-size: 30px;
+    color:blue;
+    font-style:bold;
+}
+		</style>
+		<title>Noticia deleted</title>
+		</head>
+	<body>
+		<div class="wrapper">
+			<h1>La noticia con Tag :</h1> <a id="atags"> <?=$contenido->getTags()?></a><a><br>ha sido eliminada</a>
+		
+		<br><br>
+		<a href="Index.phtml">Volver al incio</a>
+		</div>
+	</body>
+</html>
