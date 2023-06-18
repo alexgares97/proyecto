@@ -2,25 +2,63 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+    public function login(Request $request)
+    {
+        // Check if the request is a GET request
+        if ($request->isMethod('get')) {
+            // Render the login form
+            return view('user.login');
+        }
+        
+        // The request is a POST request, process the authentication
+        $credentials = $request->only('name', 'password');
+
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+            return view('user.authenticate', [
+                'login' => true,
+                'name' => $user->name,
+                'email' => $user->email,
+            ]);
+        } else {
+            return view('user.authenticate', [
+                'login' => false
+            ]);
+        }
+    }
+
+
+    public function create()
+    {
+        return view('user.create');
+    }
+
     public function store(Request $request)
     {
-        $userName = $request->input('UserName');
-        $password = $request->input('Password');
-        $email = $request->input('Email');
+        $validatedData = $request->validate([
+            'name' => 'required|string|unique:users,name', // Add unique validation rule for name field
+            'password' => 'required',
+            'email' => 'required|email|unique:users,email', // Add unique validation rule for email field
+        ]);
 
-        // Validate the fields and perform any other necessary logic
+        $user = User::create([
+            'name' => $validatedData['name'], // Corrected key
+            'password' => bcrypt($validatedData['password']), // Corrected key
+            'email' => $validatedData['email'], // Corrected key
+        ]);
 
-        $user = new User();
-        $user->name = $userName;
-        $user->password = $password;
-        $user->email = $email;
-        $user->save();
+        $users = User::all(); // Retrieve all users from the database
 
-        return view('user.register-success');
+        return view('user.store', [
+            'users' => $users,
+        ]);
     }
+
 }
+

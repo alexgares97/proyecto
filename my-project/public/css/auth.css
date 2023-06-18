@@ -1,0 +1,54 @@
+.cuadrado {
+    position: relative;
+    z-index: 1;
+    background: #FFFFFF;
+    max-width: 360px;
+    margin: 0 auto 100px;
+    padding: 45px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 100px;
+  }
+  
+  body {
+    background-size: 100%;
+    background: #8A2BE2;
+    background: -webkit-linear-gradient(right, #8A2BE2, #4169E1);
+    background: -moz-linear-gradient(right, #8A2BE2, #4169E1);
+    background: -o-linear-gradient(right, #8A2BE2, #4169E1);
+    background: linear-gradient(to left, #8A2BE2, #4169E1);
+    font-family: "Roboto", sans-serif;
+     
+  }
+  
+  .button1 {
+      background-color:#44c767;
+      -moz-border-radius:28px;
+      -webkit-border-radius:28px;
+      border-radius:28px;
+      border:1px solid #18ab29;
+      display:inline-block;
+      cursor:pointer;
+      color:#ffffff;
+      font-family:Arial;
+      font-size:17px;
+      padding:16px 31px;
+      text-decoration:none;
+      text-shadow:0px 1px 0px #2f6627;
+  }
+  .button1:hover {
+      background-color:#5cbf2a;
+  }
+  .button1:active {
+      position:relative;
+      top:1px;
+  }
+  h1{
+      color:red;
+      font-style: normal;
+      font-family: helvetica;
+      font-size: 14px
+  }

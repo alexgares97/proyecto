@@ -11,8 +11,9 @@ body{
     background: linear-gradient(to left, #8A2BE2, #4169E1);
     font-family: "Roboto", sans-serif;
     font-family: 'Lato', sans-serif;
-    }
     
+    }
+
     a{
     text-decoration: none;
     color: inherit;
@@ -21,9 +22,16 @@ body{
     .section {
     clear: both;
     padding: 0;
-    margin: 0;
-    display:flex;
+    width:100%;
     justify-content: center; /* Center the content horizontally */
+    display: flex;
+
+    }
+
+    .form{
+        display:flex;
+        justify-content: center;
+        margin-top:20px;
     }
     
     .col {
@@ -110,10 +118,6 @@ body{
     -webkit-border-radius:28px;
     border-radius:28px;
     }
-    .wiki-post:hover{
-        transform: scale(1.1);
-        transition: all .2s ease-in-out;
-    }
     
     .side-post{
     background: #fff;
@@ -137,13 +141,14 @@ body{
     .wiki-title{
     font-size: 2em;
     margin-top: 5px;
+      color:black;
     }
     
     
     .wiki-autor{
     font-size: 2.1em;
     margin-top: 5px;
-        
+    color: black;	
     }
     
     
@@ -170,25 +175,33 @@ body{
     }
     
     .button{
-    background-color:#44c767;
-    -moz-border-radius:28px;
-    -webkit-border-radius:28px;
-    border-radius:28px;
-    border:1px solid #18ab29;
-    display:inline-block;
-    cursor:pointer;
-    color:#ffffff;
-    font-family:Arial;
-    font-size:17px;
-    padding:16px 31px;
-    text-decoration:none;
-    text-shadow:0px 1px 0px #2f6627;
+        background-color:#44c767;
+        -moz-border-radius:28px;
+        -webkit-border-radius:28px;
+        border-radius:28px;
+        border:1px solid #18ab29;
+        display:inline-block;
+        cursor:pointer;
+        color:#ffffff;
+        font-family:Arial;
+        font-size:17px;
+        padding:16px 31px;
+        text-decoration:none;
+        text-shadow:0px 1px 0px #2f6627;
+    }
+    .btn{
+        display:flex;
+        justify-content: center;
     }
     
     .button:hover{
     background: #7CFC99;
     }
     
+    .entry-box-right:hover{
+        transform: scale(1.1);
+        transition: all .2s ease-in-out;
+    }
     /*Grid PC,TABLET,MOBILE*/
     
     /* @900px*/
@@ -232,15 +245,31 @@ body{
         .nav-item{ font-size: 1.2em; }
     }
     
-    table#tabletres{
-    background-color: gainsboro;
-    width: 280px;
-    height: 250px;
-    position: relative;
-    left:5%;
-     
+    #tabletres {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 0 auto; /* Add this line to center the table */
+      }
+      
+      /* Rest of the CSS code remains the same */
+      
+      #tabletres td {
+        vertical-align: top;
+      }
+      #titles {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+      }
+    .table-container {
+        /* Styles for the table container */
+        margin-left: 20px; /* Adjust the margin as needed */
+      }
+    table{
+        margin: 0 auto;
     }
-    
+          
+          
     #texttres{
     text-align: center
     }
@@ -255,19 +284,11 @@ body{
     color:black;
     }
     
-    table#tablequatre{
-        background-color: gainsboro;
-         width: 280px;
-        height: 250px;
-        position: relative;
-        left:5%;
-        margin-top: 70px
-     
-    }
+   
     
     #butonbusqueda{
         border-radius: 10px;
-        background-color: pink;
+        background-color: rgba(188, 187, 238, 0.801);
         border-color:pink;
         width:89px;
         height:30px;
@@ -281,9 +302,42 @@ body{
     #ultimahora{
         color:red;
     }
-
-    .form{
-        display:flex;
-        justify-content: center;
-        margin-top:20px;
+    img {
+        width:560px;
+        height:300px;
+      }
+    td{
+    -moz-border-radius:28px;
+    -webkit-border-radius:28px;
+    border-radius:28px;
     }
+    .entry-box-right {
+        background-color: #ffffff;
+        border: 1px solid #cccccc;
+        padding: 20px;
+        margin-bottom: 10px;
+        width: 200px; /* Set a fixed width for the entry box */
+        height: 150px; /* Set a fixed height for the entry box */
+        border-radius: 10px; /* Adjust the border radius as needed */
+        margin-right: 10px; /* Adjust the right margin as needed */
+        display: inline-block; /* Display the entry boxes inline */
+        vertical-align: top; /* Align the entry boxes to the top */
+      }
+      
+      
+      .entry-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      
+      .entry-author {
+        font-size: 14px;
+        color: #888888;
+        margin-bottom: 5px;
+      }
+      
+      .entry-description {
+        font-size: 14px;
+        line-height: 1.5;
+      }
