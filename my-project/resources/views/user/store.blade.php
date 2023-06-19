@@ -7,8 +7,10 @@
     <link rel="stylesheet" href="{{ asset('css/userstore.css') }}">
 </head>
 <body>
-    <h1>Lista de Usuarios</h1>
-    <div>
+    <div class="header">
+        <h1>Usuarios</h1>
+    </div>
+    <div class="content">
         <table>
             <thead>
                 <tr>
@@ -26,14 +28,11 @@
             </tbody>
         </table>
     </div>
-
-    <div id="menu-nav">
-        <div id="navigation-bar">
-            <ul>
-                <li><a href="{{ route('user.create') }}"><i class="fa fa-address-card-o"></i><span>Registrarte</span></a></li>
-                <li><a href="{{ route('user.login') }}"><i class="fa fa-user"></i><span>Login</span></a></li>
-            </ul>
-        </div>
+    <div class="footer">
+        <a class="button" href="{{ route('user.login') }}">Login</a>
+        <br>
+        <br>
+        <a class="button" href="{{ route('user.create') }}">Registro</a>
     </div>
 </body>
 </html>

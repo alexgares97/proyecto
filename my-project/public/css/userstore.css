@@ -1,5 +1,6 @@
     body {
    
+    color:white;
     font: normal 300 18px "Roboto", sans-serif;
     background: #8A2BE2;
     background: -webkit-linear-gradient(right, #8A2BE2, #4169E1);
@@ -8,7 +9,26 @@
     background: linear-gradient(to left, #8A2BE2, #4169E1);
     font-family: "Roboto", sans-serif;
     }
-    
+  
+    .footer, .content, .header {
+      display:flex;
+      justify-content: center;
+    }
+    .button{
+      background-color:#44c767;
+      -moz-border-radius:28px;
+      -webkit-border-radius:28px;
+      border-radius:28px;
+      border:1px solid #18ab29;
+      display:inline-block;
+      cursor:pointer;
+      color:#ffffff;
+      font-family:Arial;
+      font-size:17px;
+      padding:16px 31px;
+      text-decoration:none;
+      text-shadow:0px 1px 0px #2f6627;
+    }
     #menu-nav {
       max-width: 500px;
       margin: 130px auto;

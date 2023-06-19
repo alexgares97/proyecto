@@ -8,8 +8,7 @@
     <div class="wrapper">
         <h1>Noticia Creada Correctamente</h1>
         <a class="button" href="{{ route('content.create') }}">Agregar otra noticia</a>
-        <br>
-        <br>
+        <br><br>
         <a class="button" href="{{ route('content.index') }}">Volver al inicio</a>
     </div>
 </body>

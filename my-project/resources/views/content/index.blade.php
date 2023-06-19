@@ -32,7 +32,7 @@
                         </div>
                     </a>    
                     @endforeach
-                        <a class="button" style="size=20%" href="{{ route('content.create') }}">Añadir fichaje</a>
+                    <a class="button" style="size=20%" href="{{ route('content.create') }}">Añadir fichaje</a>
 
                 </div>
             </div>
