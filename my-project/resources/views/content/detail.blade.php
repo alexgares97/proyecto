@@ -40,7 +40,9 @@
                         <div class="entry-box-right">
                             <h2 class="entry-title">{{ $element->title }}</h2>
                             <p class="entry-author">{{ $element->author }}</p>
-                            <p class="entry-description">{{ $element->desc }}</p>
+                            <div class="desc-limit">
+                                <p class="entry-description">{{ $element->desc }}</p>
+                            </div>
                         </div>
                         @endforeach
                     </div>

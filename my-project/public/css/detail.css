@@ -27,6 +27,8 @@ body{
     display: flex;
 
     }
+    
+   
 
     .form{
         display:flex;
@@ -322,8 +324,14 @@ body{
         margin-right: 10px; /* Adjust the right margin as needed */
         display: inline-block; /* Display the entry boxes inline */
         vertical-align: top; /* Align the entry boxes to the top */
+        overflow: hidden;
       }
-      
+      .desc-control{
+        text-overflow: ellipsis;
+        overflow: hidden;
+        height:100px;
+      }
+     
       
       .entry-title {
         font-size: 18px;
